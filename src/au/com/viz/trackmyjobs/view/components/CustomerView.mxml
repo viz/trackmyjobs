@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*" currentState="Summary">
+
+<!-- dummy data - will be populated by mediators -->
+<mx:ArrayCollection id="customers">
+	<mx:Array>
+		<mx:Object label="VizAbility Pty Ltd"/>
+		<mx:Object label="Wild Digital Pty Ltd"/>
+	</mx:Array>
+</mx:ArrayCollection>
+
+	<mx:TextInput id="searchInput" left="10" right="10" top="10" height="22"/>
+    <view:CustomerList left="10" top="40" right="10" bottom="10" id="customerlist1"/>
+
+
+
+	<mx:states>
+		<mx:State name="Summary">
+		</mx:State>
+		<mx:State name="Detail">
+			<mx:AddChild position="lastChild">
+				<view:CustomerDetail x="118" y="40" width="272" height="250">
+				</view:CustomerDetail>
+			</mx:AddChild>
+			<mx:SetStyle target="{customerlist1}" name="right" value="290"/>
+		</mx:State>
+	</mx:states>
+</mx:Canvas>

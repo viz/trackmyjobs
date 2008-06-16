@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="714" height="558" xmlns:view="au.com.viz.trackmyjobs.view.components.*">
+
+	<mx:Label y="81" text="Active Customers" fontSize="14" left="10" width="150" height="23"/>
+	<view:CustomerList y="112" height="170" left="10" right="10" />
+	<mx:Label y="315" text="Priority Jobs" fontSize="14" left="10" width="150" height="23"/>
+	<view:JobList y="346" height="170" left="10" right="10"/>
+</mx:Canvas>

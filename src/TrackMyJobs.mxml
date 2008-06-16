@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" 
+	                    xmlns:view="au.com.viz.trackmyjobs.view.components.*"
+	                    layout="absolute" width="800" height="650" creationComplete="onCreationComplete()">
+
+<mx:Script>
+	<![CDATA[
+		
+			import au.com.viz.trackmyjobs.ApplicationFacade;
+
+			import org.puremvc.as3.patterns.observer.Notification;
+			
+			private var facade:ApplicationFacade = ApplicationFacade.getInstance();
+
+			private function onCreationComplete() : void
+			{
+				facade.notifyObservers(new Notification(ApplicationFacade.APP_STARTUP,this));
+			}
+		
+	]]>
+</mx:Script>
+
+	<view:ActionBar id="actionBar" left="10" top="10" right="10" />
+	<view:CustomerView id="custView" x="9" y="49" width="779.79596" height="589.7959"  visible="false"/>
+	<view:HomeView id="homeView" x="9.2" y="49.15" width="779.5918" height="589.6429"  visible="false"/>
+	<view:JobView id="jobView" x="9" y="49" width="779.7959" height="589.7959"  visible="false"/>
+
+	<mx:states>
+		<mx:State name="{ApplicationFacade.CUST_VIEW}">
+			<mx:SetProperty target="{custView}" name="visible" value="true"/>
+		</mx:State>
+		<mx:State name="{ApplicationFacade.HOME_VIEW}">
+			<mx:SetProperty target="{homeView}" name="visible" value="true"/>
+		</mx:State>
+		<mx:State name="{ApplicationFacade.JOB_VIEW}">
+			<mx:SetProperty target="{jobView}" name="visible" value="true"/>
+		</mx:State>
+	</mx:states>
+
+</mx:WindowedApplication>
