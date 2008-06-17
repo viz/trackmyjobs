@@ -1,24 +1,18 @@
 package au.com.viz.trackmyjobs.controller
 {
-	import au.com.viz.trackmyjobs.view.mediator.TrackMyJobsMediator;
-	
 	import org.puremvc.as3.interfaces.ICommand;
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import org.puremvc.as3.patterns.command.MacroCommand;
 
-	public class ApplicationStartupCommand extends SimpleCommand implements ICommand
+	public class ApplicationStartupCommand extends MacroCommand implements ICommand
 	{
 		public function ApplicationStartupCommand()
 		{
 			super();
 		}
 		
-		override public function execute(notification:INotification):void
+		override protected function initializeMacroCommand():void
 		{
-			var app:TrackMyJobs = notification.getBody() as TrackMyJobs;
-
-			facade.registerMediator(new TrackMyJobsMediator(app));
-			
+			addSubCommand(au.com.viz.trackmyjobs.controller.PrepViewCommand);
 		}
 		
 	}
