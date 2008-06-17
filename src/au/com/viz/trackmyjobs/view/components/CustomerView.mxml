@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*" currentState="Summary">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*" currentState="{ApplicationFacade.SHOW_CUST_VIEW}">
 
-<!-- dummy data - will be populated by mediators -->
-<mx:ArrayCollection id="customers">
-	<mx:Array>
-		<mx:Object label="VizAbility Pty Ltd"/>
-		<mx:Object label="Wild Digital Pty Ltd"/>
-	</mx:Array>
-</mx:ArrayCollection>
-
+  <mx:Script>
+  	<![CDATA[
+    import au.com.viz.trackmyjobs.ApplicationFacade;		
+  	]]>
+  </mx:Script>
+  
 	<mx:TextInput id="searchInput" left="10" right="10" top="10" height="22"/>
     <view:CustomerList left="10" top="40" right="10" bottom="10" id="customerList"/>
 	<view:CustomerDetail x="118" y="40" width="272" height="250"  id="customerdetail1" visible="false"/>
 
 	<mx:states>
-		<mx:State name="Summary">
+		<mx:State name="{ApplicationFacade.SHOW_CUST_VIEW}">
 			<mx:SetProperty target="{customerdetail1}" name="visible" value="false"/>
 		</mx:State>
-		<mx:State name="Detail">
+		<mx:State name="{ApplicationFacade.SHOW_CUST_DETAIL}">
 			<mx:SetStyle target="{customerList}" name="right" value="290"/>
 			<mx:SetProperty target="{customerdetail1}" name="visible" value="true"/>
 		</mx:State>

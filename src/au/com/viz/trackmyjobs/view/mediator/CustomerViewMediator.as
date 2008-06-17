@@ -6,7 +6,7 @@ package au.com.viz.trackmyjobs.view.mediator
 	
 	import flash.events.Event;
 	
-	import mx.collections.ArrayCollection;
+	import mx.events.ListEvent;
 	
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
@@ -22,6 +22,7 @@ package au.com.viz.trackmyjobs.view.mediator
 			super(NAME, viewComponent);
 			
 			customerView.searchInput.addEventListener(Event.CHANGE, searchInputChanged);
+			customerView.customerList.addEventListener(ListEvent.ITEM_CLICK, customerSelected);
 			
 		}
 		
@@ -30,15 +31,11 @@ package au.com.viz.trackmyjobs.view.mediator
 			return viewComponent as CustomerView;
 		}
 		
-		private function searchInputChanged(event:Event):void
-		{
-			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SEARCH_TEXT_CHANGED));
-		}
-				
 		override public function listNotificationInterests():Array
 		{
 			return [
-			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE
+			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE,
+			        ApplicationFacade.CUST_SELECTED
 			       ];
 		}
 		
@@ -50,9 +47,25 @@ package au.com.viz.trackmyjobs.view.mediator
 			      var cp:CustomerProxy = facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy;
 			      customerView.customerList.dataProvider = (facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy).activeCustomers;
 			      break;
+			      
+			    case ApplicationFacade.CUST_SELECTED:
+			      customerView.currentState = ApplicationFacade.SHOW_CUST_DETAIL;
+			      break;
 				  
 			}
 		}
+		
+	/* Event Handlers */
+	
+		private function searchInputChanged(event:Event):void
+		{
+			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SEARCH_TEXT_CHANGED));
+		}
 				
+		private function customerSelected(event:Event):void
+		{
+			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SELECTED, event));
+		}		
+
 	}
 }
