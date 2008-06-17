@@ -14,6 +14,7 @@ package au.com.viz.trackmyjobs
 		public static const SHOW_CUST_VIEW:String = "showCustView";
 		public static const JOB_VIEW:String = "jobView";
 		public static const SHOW_JOB_VIEW:String = "showJobView";
+		public static const CUSTOMER_PROXY_AVAILABLE:String = "customerProxyAvailable";
 
 		public static const CUST_SEARCH_TEXT_CHANGED:String = "custSearchTextChanged";
 		

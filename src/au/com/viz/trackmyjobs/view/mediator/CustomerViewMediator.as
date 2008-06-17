@@ -1,9 +1,12 @@
 package au.com.viz.trackmyjobs.view.mediator
 {
 	import au.com.viz.trackmyjobs.ApplicationFacade;
+	import au.com.viz.trackmyjobs.model.CustomerProxy;
 	import au.com.viz.trackmyjobs.view.components.CustomerView;
 	
 	import flash.events.Event;
+	
+	import mx.collections.ArrayCollection;
 	
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
@@ -34,11 +37,21 @@ package au.com.viz.trackmyjobs.view.mediator
 				
 		override public function listNotificationInterests():Array
 		{
-			return [];
+			return [
+			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE
+			       ];
 		}
 		
 		override public function handleNotification(notification:INotification):void
 		{
+			switch ( notification.getName() )
+			{
+				case ApplicationFacade.CUSTOMER_PROXY_AVAILABLE:
+			      var cp:CustomerProxy = facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy;
+			      customerView.customerList.dataProvider = (facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy).activeCustomers;
+			      break;
+				  
+			}
 		}
 				
 	}
