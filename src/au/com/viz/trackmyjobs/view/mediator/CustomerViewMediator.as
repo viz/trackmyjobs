@@ -2,6 +2,7 @@ package au.com.viz.trackmyjobs.view.mediator
 {
 	import au.com.viz.trackmyjobs.ApplicationFacade;
 	import au.com.viz.trackmyjobs.model.CustomerProxy;
+	import au.com.viz.trackmyjobs.model.vo.CustomerVO;
 	import au.com.viz.trackmyjobs.view.components.CustomerView;
 	
 	import flash.events.Event;
@@ -41,14 +42,17 @@ package au.com.viz.trackmyjobs.view.mediator
 		
 		override public function handleNotification(notification:INotification):void
 		{
+            var cp:CustomerProxy = facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy;
+
 			switch ( notification.getName() )
 			{
 				case ApplicationFacade.CUSTOMER_PROXY_AVAILABLE:
-			      var cp:CustomerProxy = facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy;
-			      customerView.customerList.dataProvider = (facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy).activeCustomers;
+			      customerView.customerList.dataProvider = cp.activeCustomers;
 			      break;
 			      
 			    case ApplicationFacade.CUST_SELECTED:
+			      cp.currentCustomer = notification.getBody() as CustomerVO;
+			      customerView.customerDetail.customer = cp.currentCustomer;
 			      customerView.currentState = ApplicationFacade.SHOW_CUST_DETAIL;
 			      break;
 				  
@@ -64,7 +68,8 @@ package au.com.viz.trackmyjobs.view.mediator
 				
 		private function customerSelected(event:Event):void
 		{
-			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SELECTED, event));
+			var listdata:Object = event.currentTarget.selectedItem;
+			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SELECTED, listdata));
 		}		
 
 	}

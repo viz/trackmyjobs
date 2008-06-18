@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+
+<mx:Script>
+	<![CDATA[
+		import au.com.viz.trackmyjobs.model.vo.CustomerVO;
+		
+		[Bindable]
+		public var customer:CustomerVO;
+		
+	]]>
+</mx:Script>
+
+	<mx:Text y="10" text="{customer.name}" right="10" left="10" height="26" fontSize="16" id="custname"/>
 	
 </mx:Canvas>

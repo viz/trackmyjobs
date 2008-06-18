@@ -9,15 +9,22 @@
   
 	<mx:TextInput id="searchInput" left="10" right="10" top="10" height="22"/>
     <view:CustomerList left="10" top="40" right="10" bottom="10" id="customerList"/>
-	<view:CustomerDetail x="118" y="40" width="272" height="250"  id="customerdetail1" visible="false"/>
+	<view:CustomerDetail x="118" y="40" width="272" height="250"  id="customerDetail" visible="false"/>
 
 	<mx:states>
 		<mx:State name="{ApplicationFacade.SHOW_CUST_VIEW}">
-			<mx:SetProperty target="{customerdetail1}" name="visible" value="false"/>
+			<mx:SetProperty target="{customerDetail}" name="visible" value="false"/>
 		</mx:State>
 		<mx:State name="{ApplicationFacade.SHOW_CUST_DETAIL}">
-			<mx:SetStyle target="{customerList}" name="right" value="290"/>
-			<mx:SetProperty target="{customerdetail1}" name="visible" value="true"/>
+			<mx:SetStyle target="{customerList}" name="right"/>
+			<mx:SetProperty target="{customerDetail}" name="visible" value="true"/>
+			<mx:SetStyle target="{customerDetail}" name="backgroundColor" value="#FFFDFD"/>
+			<mx:SetProperty target="{customerList}" name="width" value="25%"/>
+			<mx:SetStyle target="{customerDetail}" name="top" value="40"/>
+			<mx:SetProperty target="{customerDetail}" name="height"/>
+			<mx:SetStyle target="{customerDetail}" name="bottom" value="10"/>
+			<mx:SetProperty target="{customerDetail}" name="width" value="65%"/>
+			<mx:SetStyle target="{customerDetail}" name="right" value="10"/>
 		</mx:State>
 	</mx:states>
 </mx:Canvas>
