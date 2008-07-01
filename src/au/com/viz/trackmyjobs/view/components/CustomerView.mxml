@@ -9,19 +9,10 @@
   
 	<mx:TextInput id="searchInput" left="0" right="0" top="10" height="22"/>
     
-	<mx:HDividedBox x="0" y="40" width="100%" height="100%">
+	<mx:HDividedBox x="0" y="40" width="100%" height="100%" resizeToContent="false">
     <view:CustomerList left="0" top="40" bottom="0" id="customerList" height="100%"/>
 	<view:CustomerDetail right="0" top="40" bottom="0" id="customerDetail" visible="true" backgroundColor="white" height="100%"/>
 	</mx:HDividedBox>
 
-<!-- note: width set in state change isn't dynamic! -->
 
-	<mx:states>
-		<mx:State name="{ApplicationFacade.SHOW_CUST_VIEW}">
-			<mx:SetProperty target="{customerDetail}" name="visible" value="false"/>
-		</mx:State>
-		<mx:State name="{ApplicationFacade.SHOW_CUST_DETAIL}">
-			<mx:SetProperty target="{customerDetail}" name="visible" value="true"/>
-		</mx:State>
-	</mx:states>
 </mx:Canvas>
