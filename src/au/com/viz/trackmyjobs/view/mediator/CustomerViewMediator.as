@@ -7,6 +7,7 @@ package au.com.viz.trackmyjobs.view.mediator
 	
 	import flash.events.Event;
 	
+	import mx.collections.ArrayCollection;
 	import mx.events.ListEvent;
 	
 	import org.puremvc.as3.interfaces.IMediator;
@@ -23,7 +24,7 @@ package au.com.viz.trackmyjobs.view.mediator
 			super(NAME, viewComponent);
 			
 			customerView.searchInput.addEventListener(Event.CHANGE, searchInputChanged);
-			customerView.customerList.addEventListener(ListEvent.ITEM_CLICK, customerSelected);
+			customerView.customerList.addEventListener(ListEvent.CHANGE, customerSelected);
 			
 		}
 		
@@ -36,7 +37,8 @@ package au.com.viz.trackmyjobs.view.mediator
 		{
 			return [
 			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE,
-			        ApplicationFacade.CUST_SELECTED
+			        ApplicationFacade.CUST_SELECTED,
+			        ApplicationFacade.CUST_SEARCH_TEXT_CHANGED
 			       ];
 		}
 		
@@ -47,13 +49,24 @@ package au.com.viz.trackmyjobs.view.mediator
 			switch ( notification.getName() )
 			{
 				case ApplicationFacade.CUSTOMER_PROXY_AVAILABLE:
-			      customerView.customerList.dataProvider = cp.activeCustomers;
+//			      customerView.customerList.dataProvider = cp.activeCustomers;
+			      customerView.customerList.dataProvider = cp.findCustomers();
 			      break;
 			      
 			    case ApplicationFacade.CUST_SELECTED:
 			      cp.currentCustomer = notification.getBody() as CustomerVO;
 			      customerView.customerDetail.customer = cp.currentCustomer;
-			      customerView.currentState = ApplicationFacade.SHOW_CUST_DETAIL;
+			      // if we want to do more complex animations like panels shinking and new ones appearing, code the behaviour in the view components and
+			      // trigger them from the mediator. Example - a new customer is selected, the customer list shinks horizontally to make room 
+			      // for a new detail panel that grows to fill the space.
+			      break;
+			      
+			    case ApplicationFacade.CUST_SEARCH_TEXT_CHANGED:
+			      //get results from CustomerProxy
+			      var patt:String = customerView.searchInput.text;
+			      customerView.customerList.dataProvider = cp.findCustomers(patt);
+			      //var custs:ArrayCollection = (facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy).findCustomers(patt)
+			      // populate Customer List
 			      break;
 				  
 			}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*" currentState="{ApplicationFacade.SHOW_CUST_VIEW}">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*" >
 
   <mx:Script>
   	<![CDATA[
@@ -7,24 +7,21 @@
   	]]>
   </mx:Script>
   
-	<mx:TextInput id="searchInput" left="10" right="10" top="10" height="22"/>
-    <view:CustomerList left="10" top="40" right="10" bottom="10" id="customerList"/>
-	<view:CustomerDetail x="118" y="40" width="272" height="250"  id="customerDetail" visible="false"/>
+	<mx:TextInput id="searchInput" left="0" right="0" top="10" height="22"/>
+    
+	<mx:HDividedBox x="0" y="40" width="100%" height="100%">
+    <view:CustomerList left="0" top="40" bottom="0" id="customerList" height="100%"/>
+	<view:CustomerDetail right="0" top="40" bottom="0" id="customerDetail" visible="true" backgroundColor="white" height="100%"/>
+	</mx:HDividedBox>
+
+<!-- note: width set in state change isn't dynamic! -->
 
 	<mx:states>
 		<mx:State name="{ApplicationFacade.SHOW_CUST_VIEW}">
 			<mx:SetProperty target="{customerDetail}" name="visible" value="false"/>
 		</mx:State>
 		<mx:State name="{ApplicationFacade.SHOW_CUST_DETAIL}">
-			<mx:SetStyle target="{customerList}" name="right"/>
 			<mx:SetProperty target="{customerDetail}" name="visible" value="true"/>
-			<mx:SetStyle target="{customerDetail}" name="backgroundColor" value="#FFFDFD"/>
-			<mx:SetProperty target="{customerList}" name="width" value="25%"/>
-			<mx:SetStyle target="{customerDetail}" name="top" value="40"/>
-			<mx:SetProperty target="{customerDetail}" name="height"/>
-			<mx:SetStyle target="{customerDetail}" name="bottom" value="10"/>
-			<mx:SetProperty target="{customerDetail}" name="width" value="65%"/>
-			<mx:SetStyle target="{customerDetail}" name="right" value="10"/>
 		</mx:State>
 	</mx:states>
 </mx:Canvas>

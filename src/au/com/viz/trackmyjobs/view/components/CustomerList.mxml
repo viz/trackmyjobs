@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:List xmlns:mx="http://www.adobe.com/2006/mxml" labelField="name">
 
+<mx:Script>
+	<![CDATA[
+		
+		[Bindable]
+		public var reducedWidth:int;
+		[Bindable]
+		public var fullWidth:int;
+		
+		public function reduceWidth():void
+		{
+			this.width = reducedWidth;
+		}
+		
+		public function expandWidth():void
+		{
+			this.width = fullWidth;
+		}
+		
+	]]>
+</mx:Script>
+
 </mx:List>

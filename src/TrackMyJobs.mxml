@@ -21,13 +21,19 @@
 </mx:Script>
 
 	<view:ActionBar id="actionBar" left="10" top="10" right="10" />
-	<view:CustomerView id="custView" x="9" y="49" width="779.79596" height="589.7959"  visible="false"/>
-	<view:HomeView id="homeView" x="9.2" y="49.15" width="779.5918" height="589.6429"  visible="false"/>
-	<view:JobView id="jobView" x="9" y="49" width="779.7959" height="589.7959"  visible="false"/>
+	<view:CustomerView id="custView" x="9" y="49"   visible="false"/>
+	<view:HomeView id="homeView" x="9" y="49"   visible="false"/>
+	<view:JobView id="jobView" x="9" y="49"  visible="false"/>
 
 	<mx:states>
 		<mx:State name="{ApplicationFacade.CUST_VIEW}">
 			<mx:SetProperty target="{custView}" name="visible" value="true"/>
+			<mx:SetProperty target="{custView}" name="y"/>
+			<mx:SetStyle target="{custView}" name="bottom" value="5"/>
+			<mx:SetStyle target="{custView}" name="top" value="40"/>
+			<mx:SetProperty target="{custView}" name="x"/>
+			<mx:SetStyle target="{custView}" name="right" value="10"/>
+			<mx:SetStyle target="{custView}" name="left" value="10"/>
 		</mx:State>
 		<mx:State name="{ApplicationFacade.HOME_VIEW}">
 			<mx:SetProperty target="{homeView}" name="visible" value="true"/>
