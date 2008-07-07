@@ -1,9 +1,9 @@
 package au.com.viz.trackmyjobs
 {
+	import au.com.viz.trackmyjobs.controller.ApplicationStartupCommand;
+	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
-	
-	import au.com.viz.trackmyjobs.controller.ApplicationStartupCommand;
 
 	public class ApplicationFacade extends Facade implements IFacade
 	{
@@ -12,6 +12,7 @@ package au.com.viz.trackmyjobs
 
 		public static const HOME_VIEW:String = "homeView";
 		public static const SHOW_HOME_VIEW:String = "showHomeView";
+		public static const NEW_ACTION:String = "newAction";
 
 		// Customer related notifications
 		public static const CUST_VIEW:String = "custView";
@@ -20,6 +21,7 @@ package au.com.viz.trackmyjobs
 		public static const CUST_SELECTED:String = "custSelected";
 		public static const CUSTOMER_PROXY_AVAILABLE:String = "customerProxyAvailable";
 		public static const CUST_SEARCH_TEXT_CHANGED:String = "custSearchTextChanged";
+        public static const NEW_CUST_ACTION:String = "newCustAction";
 
 		// Job related notifications
 		public static const JOB_VIEW:String = "jobView";

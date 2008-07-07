@@ -20,27 +20,13 @@
 	]]>
 </mx:Script>
 
-	<view:ActionBar id="actionBar" left="10" top="10" right="10" />
-	<view:CustomerView id="custView" x="9" y="49"   visible="false"/>
+<mx:TabNavigator id="mainTabContainer" right="10" left="10" bottom="10" top="40" backgroundColor="#CBCBCB">
+	<view:CustomerView id="custView" x="9" y="49"   visible="false">
+	</view:CustomerView>
 	<view:HomeView id="homeView" x="9" y="49"   visible="false"/>
 	<view:JobView id="jobView" x="9" y="49"  visible="false"/>
+	</mx:TabNavigator>
+	<mx:Button id="newButton" x="10" y="10" label="New"/>
 
-	<mx:states>
-		<mx:State name="{ApplicationFacade.CUST_VIEW}">
-			<mx:SetProperty target="{custView}" name="visible" value="true"/>
-			<mx:SetProperty target="{custView}" name="y"/>
-			<mx:SetStyle target="{custView}" name="bottom" value="5"/>
-			<mx:SetStyle target="{custView}" name="top" value="40"/>
-			<mx:SetProperty target="{custView}" name="x"/>
-			<mx:SetStyle target="{custView}" name="right" value="10"/>
-			<mx:SetStyle target="{custView}" name="left" value="10"/>
-		</mx:State>
-		<mx:State name="{ApplicationFacade.HOME_VIEW}">
-			<mx:SetProperty target="{homeView}" name="visible" value="true"/>
-		</mx:State>
-		<mx:State name="{ApplicationFacade.JOB_VIEW}">
-			<mx:SetProperty target="{jobView}" name="visible" value="true"/>
-		</mx:State>
-	</mx:states>
 
 </mx:WindowedApplication>

@@ -3,23 +3,9 @@
 
 <mx:Script>
 	<![CDATA[
-		
-		[Bindable]
-		public var reducedWidth:int;
-		[Bindable]
-		public var fullWidth:int;
-		
-		public function reduceWidth():void
-		{
-			this.width = reducedWidth;
-		}
-		
-		public function expandWidth():void
-		{
-			this.width = fullWidth;
-		}
-		
 	]]>
 </mx:Script>
+
+
 
 </mx:List>

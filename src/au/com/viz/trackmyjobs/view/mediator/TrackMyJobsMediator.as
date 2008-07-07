@@ -2,9 +2,13 @@ package au.com.viz.trackmyjobs.view.mediator
 {
 	import au.com.viz.trackmyjobs.ApplicationFacade;
 	
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+	
 	import org.puremvc.as3.interfaces.IMediator;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import org.puremvc.as3.patterns.observer.Notification;
 
 	public class TrackMyJobsMediator extends Mediator implements IMediator
 	{
@@ -14,8 +18,9 @@ package au.com.viz.trackmyjobs.view.mediator
 		{
 			super(NAME, viewComponent);
 			
-			facade.registerMediator(new ActionBarMediator(trackMyJobs.actionBar));
+			//facade.registerMediator(new ActionBarMediator(trackMyJobs.actionBar));
 			facade.registerMediator(new CustomerViewMediator(trackMyJobs.custView));
+			trackMyJobs.newButton.addEventListener(MouseEvent.CLICK, newButtonClicked);
 		}
 		
 		private function get trackMyJobs():TrackMyJobs
@@ -28,7 +33,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			return [
 			         ApplicationFacade.SHOW_HOME_VIEW,
 			         ApplicationFacade.SHOW_CUST_VIEW,
-			         ApplicationFacade.SHOW_JOB_VIEW
+			         ApplicationFacade.SHOW_JOB_VIEW,
+			         ApplicationFacade.NEW_ACTION
 		           ];
 		}
 		
@@ -39,14 +45,30 @@ package au.com.viz.trackmyjobs.view.mediator
 				case ApplicationFacade.SHOW_HOME_VIEW:
 				  trackMyJobs.currentState = ApplicationFacade.HOME_VIEW;
 				  break;
+				  
 				case ApplicationFacade.SHOW_CUST_VIEW:
 				  trackMyJobs.currentState = ApplicationFacade.CUST_VIEW;
-				  
 				  break;
+				  
 				case ApplicationFacade.SHOW_JOB_VIEW:
 				  trackMyJobs.currentState = ApplicationFacade.JOB_VIEW;
 				  break;
+				  
+				case ApplicationFacade.NEW_ACTION:
+				  var selId:String = trackMyJobs.mainTabContainer.selectedChild.id;
+				  switch (trackMyJobs.mainTabContainer.selectedChild.id)
+				  {
+				  	case "custView":
+				  	  facade.notifyObservers(new Notification(ApplicationFacade.NEW_CUST_ACTION));
+				  	  break;
+				  }
 			}
 		}
+		
+		private function newButtonClicked(event:Event):void
+		{
+			facade.notifyObservers(new Notification(ApplicationFacade.NEW_ACTION));
+		}
+		
 	}
 }

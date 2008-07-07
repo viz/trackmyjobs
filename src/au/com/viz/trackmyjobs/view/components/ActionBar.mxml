@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml">
-	<mx:Button label="Home" id="homeButton"/>
-	<mx:Button label="Customers" id="custButton" />
-	<mx:Button label="Jobs" id="jobButton" />
-	<mx:Button label="Config" id="configButton"/>
+	<mx:Button label="New" id="newButton"/>
+	<mx:Button label="Edit" id="editButton" />
 </mx:HBox>

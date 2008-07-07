@@ -38,7 +38,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			return [
 			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE,
 			        ApplicationFacade.CUST_SELECTED,
-			        ApplicationFacade.CUST_SEARCH_TEXT_CHANGED
+			        ApplicationFacade.CUST_SEARCH_TEXT_CHANGED,
+			        ApplicationFacade.NEW_CUST_ACTION
 			       ];
 		}
 		
@@ -68,6 +69,10 @@ package au.com.viz.trackmyjobs.view.mediator
 			      //var custs:ArrayCollection = (facade.retrieveProxy(CustomerProxy.NAME) as CustomerProxy).findCustomers(patt)
 			      // populate Customer List
 			      break;
+			      
+			    case ApplicationFacade.NEW_CUST_ACTION:
+			      // create new CustomerVO
+			      //show new customer form
 				  
 			}
 		}
