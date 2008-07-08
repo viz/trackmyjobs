@@ -29,6 +29,7 @@ package au.com.viz.trackmyjobs
 		public static const JOB_VIEW:String = "jobView";
 		public static const SHOW_JOB_VIEW:String = "showJobView";
 		public static const JOB_PROXY_UPDATE:String = "jobProxyUpdate";
+		public static const JOB_SELECTED:String = "jobSelected";
 
 		
         public static function getInstance():ApplicationFacade

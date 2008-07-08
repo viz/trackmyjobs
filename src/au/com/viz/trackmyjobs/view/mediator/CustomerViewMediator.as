@@ -85,7 +85,7 @@ package au.com.viz.trackmyjobs.view.mediator
 				case ApplicationFacade.CUST_EDIT_CANCELLED:
 				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;
 				  // enable customer list
-				  customerView.custSummary.customer = customerView.customerList.selectedItem as CustomerVO;
+				  customerView.custSummary.customer = cp.currentCustomer;
 				  break;
 				  
 				case ApplicationFacade.CUST_EDIT_SAVED:

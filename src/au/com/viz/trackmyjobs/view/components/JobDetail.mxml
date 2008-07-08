@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" cornerRadius="5" backgroundColor="#FFFFFF">
-	
+	<mx:Script>
+		<![CDATA[
+			
+			import au.com.viz.trackmyjobs.model.vo.JobVO;
+			
+			[Bindable]
+			public var job:JobVO;
+			
+		]]>
+	</mx:Script>
+	<mx:Label x="10" y="10" text="Name"/>
+	<mx:Text y="26" text="{job.name}" right="10" left="10" fontSize="12"/>
 </mx:Canvas>
