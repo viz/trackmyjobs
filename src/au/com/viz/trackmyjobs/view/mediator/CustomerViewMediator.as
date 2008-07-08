@@ -73,7 +73,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			    case ApplicationFacade.NEW_CUST_ACTION:
 			      // create new CustomerVO
 			      //show new customer form
-				  
+				  customerView.custViewStack.selectedChild=customerView.editCustomer;
+				  break;
 			}
 		}
 		
