@@ -20,6 +20,7 @@ package au.com.viz.trackmyjobs.view.mediator
 			
 			//facade.registerMediator(new ActionBarMediator(trackMyJobs.actionBar));
 			facade.registerMediator(new CustomerViewMediator(trackMyJobs.custView));
+			facade.registerMediator(new JobViewMediator(trackMyJobs.jobView));
 			trackMyJobs.newButton.addEventListener(MouseEvent.CLICK, newButtonClicked);
 		}
 		

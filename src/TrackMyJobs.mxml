@@ -20,11 +20,11 @@
 	]]>
 </mx:Script>
 
-<mx:TabNavigator id="mainTabContainer" right="10" left="10" bottom="10" top="40" backgroundColor="#CBCBCB">
-	<view:CustomerView id="custView" x="9" y="49"   visible="false">
+<mx:TabNavigator id="mainTabContainer" right="10" left="10" bottom="10" top="40" backgroundColor="#CBCBCB" creationPolicy="all">
+	<view:CustomerView id="custView" x="9" y="49"   visible="false" label="Customers">
 	</view:CustomerView>
 	<view:HomeView id="homeView" x="9" y="49"   visible="false"/>
-	<view:JobView id="jobView" x="9" y="49"  visible="false"/>
+	<view:JobView id="jobView" x="9" y="49"  visible="false" label="Jobs"/>
 	</mx:TabNavigator>
 	<mx:Button id="newButton" x="10" y="10" label="New"/>
 

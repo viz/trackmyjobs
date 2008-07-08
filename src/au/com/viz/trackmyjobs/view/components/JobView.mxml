@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300" xmlns:ns1="au.com.viz.trackmyjobs.view.components.*">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:view="au.com.viz.trackmyjobs.view.components.*">
+	<mx:HDividedBox left="0" right="0" top="0" bottom="0" backgroundColor="#CBCBCB">
+		<view:JobList id="jobList" height="100%" width="30%"/>
+		<view:JobDetail id="jobDetail" height="100%" width="70%" creationPolicy="all"/>
+	</mx:HDividedBox>
 </mx:Canvas>

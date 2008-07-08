@@ -19,7 +19,6 @@ package au.com.viz.trackmyjobs
 		public static const SHOW_CUST_VIEW:String = "showCustView";
 		public static const SHOW_CUST_DETAIL:String = "showCustDetail";
 		public static const CUST_SELECTED:String = "custSelected";
-		public static const CUSTOMER_PROXY_AVAILABLE:String = "customerProxyAvailable";
 		public static const CUSTOMER_PROXY_UPDATE:String = "customerProxyUpdate";
 		public static const CUST_SEARCH_TEXT_CHANGED:String = "custSearchTextChanged";
         public static const NEW_CUST_ACTION:String = "newCustAction";
@@ -29,6 +28,7 @@ package au.com.viz.trackmyjobs
 		// Job related notifications
 		public static const JOB_VIEW:String = "jobView";
 		public static const SHOW_JOB_VIEW:String = "showJobView";
+		public static const JOB_PROXY_UPDATE:String = "jobProxyUpdate";
 
 		
         public static function getInstance():ApplicationFacade
