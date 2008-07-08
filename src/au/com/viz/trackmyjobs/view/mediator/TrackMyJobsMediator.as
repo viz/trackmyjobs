@@ -55,7 +55,6 @@ package au.com.viz.trackmyjobs.view.mediator
 				  break;
 				  
 				case ApplicationFacade.NEW_ACTION:
-				  var selId:String = trackMyJobs.mainTabContainer.selectedChild.id;
 				  switch (trackMyJobs.mainTabContainer.selectedChild.id)
 				  {
 				  	case "custView":

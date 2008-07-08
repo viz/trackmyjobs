@@ -20,8 +20,11 @@ package au.com.viz.trackmyjobs
 		public static const SHOW_CUST_DETAIL:String = "showCustDetail";
 		public static const CUST_SELECTED:String = "custSelected";
 		public static const CUSTOMER_PROXY_AVAILABLE:String = "customerProxyAvailable";
+		public static const CUSTOMER_PROXY_UPDATE:String = "customerProxyUpdate";
 		public static const CUST_SEARCH_TEXT_CHANGED:String = "custSearchTextChanged";
         public static const NEW_CUST_ACTION:String = "newCustAction";
+        public static const CUST_EDIT_CANCELLED:String = "custEditCancelled";
+        public static const CUST_EDIT_SAVED:String = "custEditSaved";
 
 		// Job related notifications
 		public static const JOB_VIEW:String = "jobView";

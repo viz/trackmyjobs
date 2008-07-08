@@ -6,8 +6,8 @@ package au.com.viz.trackmyjobs.view.mediator
 	import au.com.viz.trackmyjobs.view.components.CustomerView;
 	
 	import flash.events.Event;
+	import flash.events.MouseEvent;
 	
-	import mx.collections.ArrayCollection;
 	import mx.events.ListEvent;
 	
 	import org.puremvc.as3.interfaces.IMediator;
@@ -25,6 +25,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			
 			customerView.searchInput.addEventListener(Event.CHANGE, searchInputChanged);
 			customerView.customerList.addEventListener(ListEvent.CHANGE, customerSelected);
+			customerView.custSummary.custDetail.cancelButton.addEventListener(MouseEvent.CLICK, custEditCancelled);
+			customerView.custSummary.custDetail.saveButton.addEventListener(MouseEvent.CLICK, custEditSaved);
 			
 		}
 		
@@ -36,10 +38,12 @@ package au.com.viz.trackmyjobs.view.mediator
 		override public function listNotificationInterests():Array
 		{
 			return [
-			        ApplicationFacade.CUSTOMER_PROXY_AVAILABLE,
+			        ApplicationFacade.CUSTOMER_PROXY_UPDATE,
 			        ApplicationFacade.CUST_SELECTED,
 			        ApplicationFacade.CUST_SEARCH_TEXT_CHANGED,
-			        ApplicationFacade.NEW_CUST_ACTION
+			        ApplicationFacade.NEW_CUST_ACTION,
+			        ApplicationFacade.CUST_EDIT_CANCELLED,
+			        ApplicationFacade.CUST_EDIT_SAVED
 			       ];
 		}
 		
@@ -49,14 +53,13 @@ package au.com.viz.trackmyjobs.view.mediator
 
 			switch ( notification.getName() )
 			{
-				case ApplicationFacade.CUSTOMER_PROXY_AVAILABLE:
-//			      customerView.customerList.dataProvider = cp.activeCustomers;
+				case ApplicationFacade.CUSTOMER_PROXY_UPDATE:
 			      customerView.customerList.dataProvider = cp.findCustomers();
 			      break;
 			      
 			    case ApplicationFacade.CUST_SELECTED:
 			      cp.currentCustomer = notification.getBody() as CustomerVO;
-			      customerView.customerDetail.customer = cp.currentCustomer;
+			      customerView.custSummary.customer = cp.currentCustomer;
 			      // if we want to do more complex animations like panels shinking and new ones appearing, code the behaviour in the view components and
 			      // trigger them from the mediator. Example - a new customer is selected, the customer list shinks horizontally to make room 
 			      // for a new detail panel that grows to fill the space.
@@ -73,8 +76,23 @@ package au.com.viz.trackmyjobs.view.mediator
 			    case ApplicationFacade.NEW_CUST_ACTION:
 			      // create new CustomerVO
 			      //show new customer form
-				  customerView.custViewStack.selectedChild=customerView.editCustomer;
+				  customerView.custSummary.customer = cp.newCustomer();
+				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.edit;
+				  
+				  // disable customer list - grey out and defocus
 				  break;
+				  
+				case ApplicationFacade.CUST_EDIT_CANCELLED:
+				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;
+				  // enable customer list
+				  customerView.custSummary.customer = customerView.customerList.selectedItem as CustomerVO;
+				  break;
+				  
+				case ApplicationFacade.CUST_EDIT_SAVED:
+				  cp.saveCustomer(notification.getBody() as CustomerVO);
+				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;				  
+				  break;
+				  
 			}
 		}
 		
@@ -90,6 +108,16 @@ package au.com.viz.trackmyjobs.view.mediator
 			var listdata:Object = event.currentTarget.selectedItem;
 			facade.notifyObservers(new Notification(ApplicationFacade.CUST_SELECTED, listdata));
 		}		
+		
+		private function custEditCancelled(event:Event):void
+		{
+			facade.notifyObservers(new Notification(ApplicationFacade.CUST_EDIT_CANCELLED));
+		}
+		
+		private function custEditSaved(event:Event):void
+		{
+		    facade.notifyObservers(new Notification(ApplicationFacade.CUST_EDIT_SAVED, customerView.custSummary.customer));	
+		}
 
 	}
 }
