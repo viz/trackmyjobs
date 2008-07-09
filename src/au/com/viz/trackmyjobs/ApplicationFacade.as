@@ -7,6 +7,9 @@ package au.com.viz.trackmyjobs
 
 	public class ApplicationFacade extends Facade implements IFacade
 	{
+		// General definitions
+		public static const NO_STATE:int = -1;
+		
 		// general application notifications
 		public static const APP_STARTUP:String = "AppStartup";
 
@@ -30,6 +33,9 @@ package au.com.viz.trackmyjobs
 		public static const SHOW_JOB_VIEW:String = "showJobView";
 		public static const JOB_PROXY_UPDATE:String = "jobProxyUpdate";
 		public static const JOB_SELECTED:String = "jobSelected";
+		public static const NEW_JOB_ACTION:String = "newJobAction";
+        public static const JOB_EDIT_CANCELLED:String = "jobEditCancelled";
+        public static const JOB_EDIT_SAVED:String = "jobEditSaved";
 
 		
         public static function getInstance():ApplicationFacade

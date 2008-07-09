@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" cornerRadius="5" backgroundColor="#FFFFFF">
+<mx:ViewStack xmlns:mx="http://www.adobe.com/2006/mxml" borderStyle="solid" cornerRadius="5" backgroundColor="#FFFFFF">
 	<mx:Script>
 		<![CDATA[
 			
@@ -10,6 +10,19 @@
 			
 		]]>
 	</mx:Script>
-	<mx:Label x="10" y="10" text="Name"/>
-	<mx:Text y="26" text="{job.name}" right="10" left="10" fontSize="12"/>
-</mx:Canvas>
+	
+	<mx:Binding source="jobName.text" destination="job.name"/>
+
+		<mx:Canvas id="view" label="view" width="100%" height="100%">
+			<mx:Label x="10" y="10" text="Name"/>
+        	<mx:Text y="26" text="{job.name}" right="10" left="10" fontSize="12"/>
+		</mx:Canvas>
+		<mx:Canvas id="edit" label="edit" width="100%" height="100%">
+			<mx:Label x="10" y="10" text="Name"/>
+        	<mx:TextInput id="jobName" y="26" text="{job.name}" right="10" left="10" fontSize="12"/>
+		    <mx:HBox bottom="10"  horizontalAlign="right" verticalAlign="middle" right="10">
+			  <mx:Button id="saveButton" label="Save" />
+		      <mx:Button id="cancelButton" label="Cancel"/>
+		    </mx:HBox>
+		</mx:Canvas>
+</mx:ViewStack>

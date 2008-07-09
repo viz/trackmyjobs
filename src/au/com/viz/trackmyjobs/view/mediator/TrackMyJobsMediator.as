@@ -61,6 +61,11 @@ package au.com.viz.trackmyjobs.view.mediator
 				  	case "custView":
 				  	  facade.notifyObservers(new Notification(ApplicationFacade.NEW_CUST_ACTION));
 				  	  break;
+				  	  
+				  	case "jobView":
+				  	  facade.notifyObservers(new Notification(ApplicationFacade.NEW_JOB_ACTION));
+				  	  break;
+				  	
 				  }
 			}
 		}
