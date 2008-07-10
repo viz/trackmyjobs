@@ -26,5 +26,7 @@
 			  <mx:Button id="saveButton" label="Save" />
 		      <mx:Button id="cancelButton" label="Cancel"/>
 		    </mx:HBox>
+		    <mx:Label x="12" y="59" text="Current State"/>
+		    <mx:ComboBox id="statePicker" x="99" y="57" width="206" labelField="name"/>
 		</mx:Canvas>
 </mx:ViewStack>
