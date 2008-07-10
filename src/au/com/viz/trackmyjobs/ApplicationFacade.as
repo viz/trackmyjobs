@@ -16,6 +16,7 @@ package au.com.viz.trackmyjobs
 		public static const HOME_VIEW:String = "homeView";
 		public static const SHOW_HOME_VIEW:String = "showHomeView";
 		public static const NEW_ACTION:String = "newAction";
+		public static const EDIT_ACTION:String = "ediAction";
 
 		// Customer related notifications
 		public static const CUST_VIEW:String = "custView";
@@ -25,6 +26,7 @@ package au.com.viz.trackmyjobs
 		public static const CUSTOMER_PROXY_UPDATE:String = "customerProxyUpdate";
 		public static const CUST_SEARCH_TEXT_CHANGED:String = "custSearchTextChanged";
         public static const NEW_CUST_ACTION:String = "newCustAction";
+        public static const EDIT_CUST_ACTION:String = "editCustAction";
         public static const CUST_EDIT_CANCELLED:String = "custEditCancelled";
         public static const CUST_EDIT_SAVED:String = "custEditSaved";
 
@@ -34,6 +36,7 @@ package au.com.viz.trackmyjobs
 		public static const JOB_PROXY_UPDATE:String = "jobProxyUpdate";
 		public static const JOB_SELECTED:String = "jobSelected";
 		public static const NEW_JOB_ACTION:String = "newJobAction";
+		public static const EDIT_JOB_ACTION:String = "editJobAction";
         public static const JOB_EDIT_CANCELLED:String = "jobEditCancelled";
         public static const JOB_EDIT_SAVED:String = "jobEditSaved";
 

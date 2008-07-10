@@ -43,7 +43,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			        ApplicationFacade.CUST_SEARCH_TEXT_CHANGED,
 			        ApplicationFacade.NEW_CUST_ACTION,
 			        ApplicationFacade.CUST_EDIT_CANCELLED,
-			        ApplicationFacade.CUST_EDIT_SAVED
+			        ApplicationFacade.CUST_EDIT_SAVED,
+			        ApplicationFacade.EDIT_CUST_ACTION
 			       ];
 		}
 		
@@ -91,6 +92,11 @@ package au.com.viz.trackmyjobs.view.mediator
 				case ApplicationFacade.CUST_EDIT_SAVED:
 				  cp.saveCustomer(notification.getBody() as CustomerVO);
 				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;				  
+				  break;
+				  
+				case ApplicationFacade.EDIT_CUST_ACTION:
+				  customerView.custSummary.customer = cp.cloneCustomer(cp.currentCustomer);
+				  customerView.custSummary.custDetail.selectedChild = customerView.custSummary.custDetail.edit;
 				  break;
 				  
 			}

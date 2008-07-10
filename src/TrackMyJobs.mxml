@@ -27,6 +27,7 @@
 	<view:JobView id="jobView" x="9" y="49"  visible="false" label="Jobs"/>
 	</mx:TabNavigator>
 	<mx:Button id="newButton" x="10" y="10" label="New"/>
+	<mx:Button id="editButton" x="68" y="10" label="Edit"/>
 
 
 </mx:WindowedApplication>

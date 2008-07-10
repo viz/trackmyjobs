@@ -22,6 +22,7 @@ package au.com.viz.trackmyjobs.view.mediator
 			facade.registerMediator(new CustomerViewMediator(trackMyJobs.custView));
 			facade.registerMediator(new JobViewMediator(trackMyJobs.jobView));
 			trackMyJobs.newButton.addEventListener(MouseEvent.CLICK, newButtonClicked);
+			trackMyJobs.editButton.addEventListener(MouseEvent.CLICK, editButtonClicked);
 		}
 		
 		private function get trackMyJobs():TrackMyJobs
@@ -35,7 +36,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			         ApplicationFacade.SHOW_HOME_VIEW,
 			         ApplicationFacade.SHOW_CUST_VIEW,
 			         ApplicationFacade.SHOW_JOB_VIEW,
-			         ApplicationFacade.NEW_ACTION
+			         ApplicationFacade.NEW_ACTION,
+			         ApplicationFacade.EDIT_ACTION
 		           ];
 		}
 		
@@ -67,12 +69,34 @@ package au.com.viz.trackmyjobs.view.mediator
 				  	  break;
 				  	
 				  }
+				  break;
+				  
+				case ApplicationFacade.EDIT_ACTION:
+				  switch (trackMyJobs.mainTabContainer.selectedChild.id)
+				  {
+				  	case "custView":
+				  	  facade.notifyObservers(new Notification(ApplicationFacade.EDIT_CUST_ACTION));
+				  	  break;
+				  	  
+				  	case "jobView":
+				  	  facade.notifyObservers(new Notification(ApplicationFacade.EDIT_JOB_ACTION));
+				  	  break;
+				  	
+				  }
+				  break;
+				  
+				
 			}
 		}
 		
 		private function newButtonClicked(event:Event):void
 		{
 			facade.notifyObservers(new Notification(ApplicationFacade.NEW_ACTION));
+		}
+		
+		private function editButtonClicked(event:Event):void
+		{
+			facade.notifyObservers(new Notification(ApplicationFacade.EDIT_ACTION));
 		}
 		
 	}
