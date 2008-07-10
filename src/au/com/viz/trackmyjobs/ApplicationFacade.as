@@ -1,6 +1,7 @@
 package au.com.viz.trackmyjobs
 {
 	import au.com.viz.trackmyjobs.controller.ApplicationStartupCommand;
+	import au.com.viz.trackmyjobs.controller.PrepModelCommand;
 	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
@@ -12,6 +13,7 @@ package au.com.viz.trackmyjobs
 		
 		// general application notifications
 		public static const APP_STARTUP:String = "AppStartup";
+		public static const STATE_PROXY_READY:String = "stateProxyReady";
 
 		public static const HOME_VIEW:String = "homeView";
 		public static const SHOW_HOME_VIEW:String = "showHomeView";
@@ -52,6 +54,7 @@ package au.com.viz.trackmyjobs
         {
             super.initializeController();
             this.registerCommand(APP_STARTUP, ApplicationStartupCommand);
+            this.registerCommand(STATE_PROXY_READY, PrepModelCommand);
         }
 		
 	}

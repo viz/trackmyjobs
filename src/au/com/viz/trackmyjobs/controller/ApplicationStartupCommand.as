@@ -13,7 +13,7 @@ package au.com.viz.trackmyjobs.controller
 		override protected function initializeMacroCommand():void
 		{
 			addSubCommand(au.com.viz.trackmyjobs.controller.PrepViewCommand);
-			addSubCommand(au.com.viz.trackmyjobs.controller.PrepModelCommand);
+			addSubCommand(au.com.viz.trackmyjobs.controller.PrepStatesCommand);
 		}
 		
 	}
