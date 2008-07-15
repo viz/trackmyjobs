@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" cornerRadius="10" xmlns:view="au.com.viz.trackmyjobs.view.components.*">
+
+<mx:Script>
+	<![CDATA[
+		import au.com.viz.trackmyjobs.model.vo.CustomerVO;
+		
+		[Bindable]
+		public var customer:CustomerVO;
+		
+	]]>
+</mx:Script>
+    <view:CustomerDetail id="custDetail" customer="{customer}" height="100%" width="100%"/>
+</mx:Canvas>

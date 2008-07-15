@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ViewStack xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:view="au.com.viz.trackmyjobs.view.components.*">
+<mx:Script>
+	<![CDATA[
+		import au.com.viz.trackmyjobs.model.vo.CustomerVO;
+		
+		[Bindable]
+		public var customer:CustomerVO;
+
+
+	]]>
+</mx:Script>
+
+		<mx:Canvas id="view" width="100%" height="100%">
+				<mx:Label x="10" y="10" text="Customer Name"/>
+				<mx:Text x="10" y="36" text="{customer.name}" fontSize="16" fontWeight="normal"/>
+				<mx:TabNavigator right="0" left="0" bottom="0" top="271">
+						<mx:Canvas label="Current Jobs" width="100%" height="100%">
+								<view:JobList dataProvider="{customer.jobs}" labelField="name" left="0" right="0" top="0" bottom="0"/>
+						</mx:Canvas>
+				</mx:TabNavigator>
+		</mx:Canvas>
+		
+		<mx:Canvas id="edit" width="100%" height="100%">
+		    <mx:HBox bottom="10"  horizontalAlign="right" verticalAlign="middle" right="10">
+			  <mx:Button id="saveButton" label="Save" />
+		      <mx:Button id="cancelButton" label="Cancel"/>
+		    </mx:HBox>
+
+		</mx:Canvas>
+	
+</mx:ViewStack>

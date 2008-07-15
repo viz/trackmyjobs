@@ -12,7 +12,7 @@
 	  <mx:TextInput id="searchInput" left="0" right="0" top="10" height="22" width="100%" cornerRadius="5" borderStyle="solid" text="type filter text here..."/>
       <view:CustomerList left="0" bottom="0" id="customerList" height="100%" width="100%" borderStyle="solid" cornerRadius="5"/>   	
     </mx:VBox>
-	<view:CustomerSummary id="custSummary" right="0" top="40" bottom="0" visible="true" backgroundColor="white" height="100%" borderStyle="solid" cornerRadius="5"/>
+	<view:CustomerDetail id="custDetail" right="0" top="40" bottom="0" visible="true" backgroundColor="white" borderStyle="solid" cornerRadius="5"/>
 	</mx:HDividedBox>
  
 </mx:Canvas>

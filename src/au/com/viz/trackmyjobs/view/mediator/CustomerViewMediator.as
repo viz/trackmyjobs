@@ -25,8 +25,8 @@ package au.com.viz.trackmyjobs.view.mediator
 			
 			customerView.searchInput.addEventListener(Event.CHANGE, searchInputChanged);
 			customerView.customerList.addEventListener(ListEvent.CHANGE, customerSelected);
-			customerView.custSummary.custDetail.cancelButton.addEventListener(MouseEvent.CLICK, custEditCancelled);
-			customerView.custSummary.custDetail.saveButton.addEventListener(MouseEvent.CLICK, custEditSaved);
+			customerView.custDetail.cancelButton.addEventListener(MouseEvent.CLICK, custEditCancelled);
+			customerView.custDetail.saveButton.addEventListener(MouseEvent.CLICK, custEditSaved);
 			
 		}
 		
@@ -60,7 +60,7 @@ package au.com.viz.trackmyjobs.view.mediator
 			      
 			    case ApplicationFacade.CUST_SELECTED:
 			      cp.currentCustomer = notification.getBody() as CustomerVO;
-			      customerView.custSummary.customer = cp.currentCustomer;
+			      customerView.custDetail.customer = cp.currentCustomer;
 			      // if we want to do more complex animations like panels shinking and new ones appearing, code the behaviour in the view components and
 			      // trigger them from the mediator. Example - a new customer is selected, the customer list shinks horizontally to make room 
 			      // for a new detail panel that grows to fill the space.
@@ -77,26 +77,26 @@ package au.com.viz.trackmyjobs.view.mediator
 			    case ApplicationFacade.NEW_CUST_ACTION:
 			      // create new CustomerVO
 			      //show new customer form
-				  customerView.custSummary.customer = cp.newCustomer();
-				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.edit;
+				  customerView.custDetail.customer = cp.newCustomer();
+				  customerView.custDetail.selectedChild=customerView.custDetail.edit;
 				  
 				  // disable customer list - grey out and defocus
 				  break;
 				  
 				case ApplicationFacade.CUST_EDIT_CANCELLED:
-				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;
+				  customerView.custDetail.selectedChild=customerView.custDetail.view;
 				  // enable customer list
-				  customerView.custSummary.customer = cp.currentCustomer;
+				  customerView.custDetail.customer = cp.currentCustomer;
 				  break;
 				  
 				case ApplicationFacade.CUST_EDIT_SAVED:
 				  cp.saveCustomer(notification.getBody() as CustomerVO);
-				  customerView.custSummary.custDetail.selectedChild=customerView.custSummary.custDetail.view;				  
+				  customerView.custDetail.selectedChild=customerView.custDetail.view;				  
 				  break;
 				  
 				case ApplicationFacade.EDIT_CUST_ACTION:
-				  customerView.custSummary.customer = cp.cloneCustomer(cp.currentCustomer);
-				  customerView.custSummary.custDetail.selectedChild = customerView.custSummary.custDetail.edit;
+				  customerView.custDetail.customer = cp.cloneCustomer(cp.currentCustomer);
+				  customerView.custDetail.selectedChild = customerView.custDetail.edit;
 				  break;
 				  
 			}
@@ -122,7 +122,7 @@ package au.com.viz.trackmyjobs.view.mediator
 		
 		private function custEditSaved(event:Event):void
 		{
-		    facade.notifyObservers(new Notification(ApplicationFacade.CUST_EDIT_SAVED, customerView.custSummary.customer));	
+		    facade.notifyObservers(new Notification(ApplicationFacade.CUST_EDIT_SAVED, customerView.custDetail.customer));	
 		}
 
 	}
