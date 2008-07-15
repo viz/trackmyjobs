@@ -84,8 +84,8 @@ package au.com.viz.trackmyjobs.view.mediator
 		          break;
 		          
 		        case ApplicationFacade.JOB_EDIT_SAVED:
-		          var job:JobVO = notification.getBody() as JobVO;
-		          job.currentState = jobView.jobDetail.statePicker.selectedItem as StateVO;
+		          var job:JobVO = notification.getBody()[0] as JobVO;
+		          job.currentState = notification.getBody()[1] as StateVO;
 		          jp.saveJob(job);
 		          jobView.jobDetail.selectedChild = jobView.jobDetail.view;
 		          break;
@@ -119,7 +119,7 @@ package au.com.viz.trackmyjobs.view.mediator
 		
 		private function saveJob(event:Event):void
 		{
-			facade.notifyObservers(new Notification(ApplicationFacade.JOB_EDIT_SAVED, jobView.jobDetail.job));
+			facade.notifyObservers(new Notification(ApplicationFacade.JOB_EDIT_SAVED, [jobView.jobDetail.job, jobView.jobDetail.statePicker.selectedItem] ));
 		}
 	}
 }

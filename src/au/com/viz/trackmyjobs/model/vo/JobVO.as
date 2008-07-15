@@ -56,6 +56,18 @@ package au.com.viz.trackmyjobs.model.vo
 		{
 			id = job.id;
 			name = job.name;
+			description = job.description;
+			dateRequired = job.dateRequired;
+			priority = job.priority;
+			quoteNum = job.quoteNum;
+			invoiceNum = job.invoiceNum;
+			poNum = job.poNum;
+			proofs = job.proofs;
+			clientId = job.clientId;
+			payerId = job.payerId;
+			currentState = job.currentState;
+			productionArea = job.productionArea;
+			
 		}
 
 
